@@ -95,7 +95,7 @@ export default function Home() {
         </div>
       </div>
       <div id='about' className="w-full max-w-[1000px] mx-auto mt-[3rem] pt-[6rem] sm:px-[20px] z-[100000000]">
-        <div className="grid grid-cols-12 sm:grid-cols-1 gap-[30px] w-full">
+        <div className="grid grid-cols-12 sm:mt-[4rem] sm:grid-cols-1 gap-[30px] w-full">
           <div className="col-span-4 sm:col-span-12 grid gap-[20px]">
             <div className="w-full">
               <p className="text-[20px] text-[#C6FCA6] uppercase">
