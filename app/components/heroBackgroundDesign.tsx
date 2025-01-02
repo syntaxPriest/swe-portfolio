@@ -5,7 +5,7 @@ export default function HeroBackgroundDesign () {
     return (
         <>
             <div className="sm:hidden absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-              <div className="z-[1] w-[1300px] h-[1300px] rounded-[100rem] bg-[#00000010] border border-[#80808020] flex items-center justify-center">
+              <div className="z-[1] w-[1300px] h-[1300px] rounded-[100rem] bg-[#00000010] border border-[#80808020] flex items-center justify-center opacity-[0.3]">
                 <div className="w-[1100px] h-[1100px] rounded-[100rem] bg-[#00000010] border border-[#80808020] flex items-center justify-center circle-wave">
                   <div className="w-[900px] h-[900px] rounded-[100rem] bg-[#00000010] border border-[#80808020] flex items-center justify-center circle-wave">
                     <div className="w-[700px] h-[700px] rounded-[100rem] bg-[#00000010] border border-[#80808020] border-b-[0] flex items-center justify-center circle-wave"></div>

@@ -15,6 +15,8 @@ import TechStackSection from "./components/techStackSection";
 import SocialSection from "./components/socialSection";
 import HeroBackgroundDesign from "./components/heroBackgroundDesign";
 import LocationDisplay from "./components/mapDisplay";
+import Card from "./components/project-card";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const myEmail = "adewaled03@gmail.com"
 export type navItemsProps = "home" | "about" | "works" | "projects" | "articles";
@@ -35,7 +37,7 @@ export default function Home() {
       <div className="h-[40rem]" id='home'>
         <div
           style={{
-            background: "url(/bg/dark-spots.png)",
+            background: "#000000",
           }}
           className="absolute top-0 left-0 w-full sm:h-[110vh] blurred-div"
         >
@@ -56,18 +58,20 @@ export default function Home() {
                 <p className="text-[12px]">Available for opportunities</p>
               </div>
             </div>
-            <h3 className="text-[40px] sm:text-[36px] text-[#fff] font-[900] font-[Lobster] leading-[125%] mt-[3rem]">
-              Software Engineer <br />
-              Frontend Developer{" "}
-            </h3>
-            <p className="text-[18px] sm:text-[16px] text-[#ffffff99] mt-4">
-              I'm Daniel Adewale, Software Engineer and Senior Frontend
-              Developer.
-            </p>
-            <p className="text-[18px] sm:text-[16px] text-[#ffffff99] mt-1">
-              Over 6 years of experience developing quality softwares and
-              products.
-            </p>
+            <Fade>
+              <h3 className="text-[40px] sm:text-[36px] text-[#fff] font-[900]  leading-[125%] mt-[3rem]">
+                Software Engineer <br />
+                Frontend Developer{" "}
+              </h3>
+              <p className="text-[18px] sm:text-[16px] text-[#ffffff99] mt-4">
+                I'm Daniel Adewale, Software Engineer and Senior Frontend
+                Developer.
+              </p>
+              <p className="text-[18px] sm:text-[16px] text-[#ffffff99] mt-1">
+                Over 6 years of experience developing quality softwares and
+                products.
+              </p>
+            </Fade>
             <div className="flex gap-[10px] justify-center mt-[3rem] sm:mt-[5rem] sm:flex-col">
               <a href={`mailto:${myEmail}`}>
                 <Button
@@ -101,7 +105,7 @@ export default function Home() {
               <p className="text-[20px] text-[#C6FCA6] uppercase">
                 Beyond Portfolio
               </p>
-              <h3 className="text-[40px] font-[900] leading-[125%] font-[Lobster]">
+              <h3 className="text-[40px] font-[900] leading-[125%] ">
                 Let's know more about me
               </h3>
             </div>
@@ -147,7 +151,7 @@ export default function Home() {
             My Experiences
           </p>
           <h3
-            className="text-[28px] font-[Lobster] text-center font-[800]"
+            className="text-[28px]  text-center font-[800]"
             style={{
               fontStyle: "normal",
             }}
@@ -160,103 +164,66 @@ export default function Home() {
                 key={index}
                 className="py-[3rem] flex sm:flex-col gap-[40px] sm:gap-[30px] justify-between border-b border-[#ffffff16]"
               >
-                <div className="flex-1">
-                  <h1>
-                    {item.role}{" "}
-                    <span className="text-[#C6FCA6]">{item.company}</span>
-                  </h1>
-                  <p className="text-[14px] mt-2 text-[#ffffff80]">
-                    {item.timeline} | {item.location}
+                <Slide 
+                  direction="left"
+                  className="flex-1"
+                >
+                  <div className="flex-1">
+                    <h1>
+                      {item.role}{" "}
+                      <span className="text-[#C6FCA6]">{item.company}</span>
+                    </h1>
+                    <p className="text-[14px] mt-2 text-[#ffffff80]">
+                      {item.timeline} | {item.location}
+                    </p>
+                  </div>
+                </Slide>
+                <Slide 
+                  direction='right'
+                  className="flex-1"
+                >
+                  <p className="flex-1 text-[14px] text-[#ffffff80]">
+                    {item.narration}
                   </p>
-                </div>
-                <p className="flex-1 text-[14px] text-[#ffffff80]">
-                  {item.narration}
-                </p>
+                </Slide>
               </div>
             ))}
           </div>
         </div>
-        <div id='projects' className="w-full max-w-[1150px] mx-auto py-[7rem] sm:py-[0rem]">
+        <div id='projects' className="w-full max-w-[1150px] mx-auto py-[4rem] sm:py-[0rem]">
           <p className="text-center text-[#C6FCA6] uppercase text-[18px]">
             Curated work
           </p>
           <h3
-            className="text-[28px] font-[Lobster] text-center font-[800]"
+            className="text-[28px]  text-center font-[800]"
             style={{
               fontStyle: "normal",
             }}
           >
             Featured Projects
           </h3>
-          <Carousel
-              responsive={projectResponsive}
-              autoPlay
-              showDots
-              ssr
-              className="w-[100%] pb-[40px]"
-              autoPlaySpeed={4000}
-              removeArrowOnDeviceType={["mobile"]}
-              infinite
-              customDot={<CustomHeroDot />}
-              dotListClass="hero-carou-dot-class"
-            >
+          <div className="flex flex-wrap gap-6 p-10 sm:p-[0] sm:py-[20px] justify-center">
           {
             projectList.map((item, index) => (
-              <div 
-                className="relative w-full max-w-[900px] mt-[4rem] mx-auto z-[100]"
+              <Card
+                index={index}
                 key={index}
-                style={{
-                  background: "url('/bg/dark-spots.png')"
-                }}
-              >
-              <div className="relative project-card flex sm:flex-col-reverse sm:gap-[30px]">
-                <div className="w-full max-w-[380px]">
-                  <div className="border-b border-[#ffffff30] py-[20px]">
-                    <p className="text-[#C6FCA6] text-[14px] flex items-center gap-[5px]">
-                      <SparklesIcon className="w-5 h-5" /> 
-                      Project
-                    </p>
-                    <h3 className="text-[28px] mt-3 font-[900] font-[lobster]">
-                      {item.name}
-                    </h3>
-                  </div>
-                  <div className="py-[20px] grid gap-[10px]">
-                    <div className="flex items-center gap-[8px] text-[15px] text-[#ffffff99]">
-                      {/* <CheckCircleIcon className="w-5 h-5" /> */}
-                      <p>{item.desc}</p>
-                    </div>
-                    {
-                      item.link && 
-                        <a href={item.link} target="_blank" rel="noreferrer">
-                          <Button
-                            text="View Project"
-                            bg="#fff"
-                            color="#161616"
-                            className="w-[200px] mt-4"
-                            forwardIcon={ArrowUpRightIcon}
-                          />
-                        </a>
-                    }
-                    
-                  </div>
-                </div>
-                <img
-                  src={item.img}
-                  alt=""
-                  className="absolute sm:relative bottom-0 right-[0rem] w-[450px] sm:w-[100%] z-[1]"
-                />
-              </div>
-            </div>
+                title={item.name}
+                description={item.desc}
+                stars={3}
+                link={item.link}
+              />
             ))
           }
-          </Carousel>
+          </div>
+          {/* </Carousel> */}
         </div>
-        <div id='articles' className="w-full max-w-[1150px] mx-auto py-[7rem]">
+        <div id='articles' className="w-full max-w-[1150px] mx-auto py-[4rem]">
           <p className="text-center text-[#C6FCA6] uppercase text-[18px]">
             Thoughts and Articles
           </p>
           <h3
-            className="text-[28px] font-[Lobster] text-center font-[800]"
+            className="text-[28px]  text-center font-[800]"
             style={{
               fontStyle: "normal",
             }}
@@ -278,7 +245,7 @@ export default function Home() {
                     key={index}
                     className="relative w-[100%] max-w-[350px] h-[350px] bg-[#00000020] rounded-[20px] border border-[#ffffff40] p-[30px] narration-item-card"
                   >
-                    <p className="text-[24px] font-[700] leading-[200%] font-[Lobster]">
+                    <p className="text-[24px] font-[700] leading-[200%]">
                       {item.name}
                     </p>
                     <ArrowRightIcon className="w-8 h-8 absolute bottom-[2rem] left-[30px]" />
@@ -290,7 +257,7 @@ export default function Home() {
         </div>
         <div className="w-[100%] max-w-[1000px] my-[5rem] sm:my-[0rem] mb-[0rem] mx-auto p-[40px] rounded-[35px] flex sm:flex-col sm:gap-[30px] items-center sm:items-start justify-between banner-card">
             <div>
-              <h3 className="text-[25px] font-[800] font-[Lobster]">Let's connect and create something amazing</h3>
+              <h3 className="text-[25px] font-[800] ">Let's connect and create something amazing</h3>
               <p className="mt-1 text-[14px] font-[300]">Reach out to me for collaborations, inquiries, or to just say hello</p>
             </div>
             <a href={`mailto:${myEmail}`}>
@@ -403,7 +370,7 @@ const projectList = [
       name:"Contribuild",
       desc:"A platform to find the property of your dreams and start saving towards owning it!",
       img:"/works/contribuild.png",
-      link:"https://contribuild.netlify.app",
+      link:"https://contribuild.ng",
       stacks: ["React", "Typescript", "Redux", "Styled Component", "REST API", "Tailwind"]
   },
   {

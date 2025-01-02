@@ -14,16 +14,27 @@
   }
 }
 
+@font-face {
+  font-family: "Cal Sans";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url("./fonts/webfonts/CalSans-SemiBold.woff2") format("woff2"),
+    url("./fonts/webfonts/CalSans-SemiBold.woff") format("woff"),
+    url("./fonts/webfonts/CalSans-SemiBold.ttf") format("truetype");
+}
+
 html, body {
   color: #fff;
-  background: #081B28;
-  font-family: 'Inter', Helvetica, sans-serif;
+  background: #1a1a1a;
+  font-family: 'Cal Sans', Helvetica, sans-serif;
   font-style: normal;
   scroll-behavior: smooth;
+  overflow-x:hidden;
 }
 
 h1, h2, h3, h4, h5 , h6 {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Cal Sans', sans-serif;
 }
 
 .blurred-div::after {
@@ -47,14 +58,14 @@ h1, h2, h3, h4, h5 , h6 {
   background: linear-gradient(180.7deg, #081B28 40.44%, rgba(167, 252, 238, 0.74) 160.77%);
 }
 .persona-card {
-  font-family: 'Inter', 'sans-serif';
+  font-family: 'Cal Sans', 'sans-serif';
   font-size: 11px;
   font-weight: 500;
   color: #161616;
   background: linear-gradient(99.7deg, #C6FCA6 0.38%, rgba(167, 252, 238, 0.74) 98.77%);
 }
 .banner-card {
-  font-family: 'Inter', 'sans-serif';
+  font-family: 'Cal Sans', 'sans-serif';
   font-weight: 500;
   color: #161616;
   background: linear-gradient(99.7deg, #C6FCA6 0.38%, rgba(167, 252, 238, 0.74) 98.77%);
