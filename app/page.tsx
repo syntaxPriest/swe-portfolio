@@ -208,6 +208,7 @@ export default function Home() {
               <Card
                 index={index}
                 key={index}
+                img={item.img}
                 title={item.name}
                 description={item.desc}
                 stars={3}

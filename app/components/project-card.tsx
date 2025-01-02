@@ -7,13 +7,14 @@ import Button from './button';
 interface CardProps {
   index: number,
   date?: string;
+  img?: string;
   title: string;
   description: string;
   stars: number;
   link: string;
 }
 
-const Card: React.FC<CardProps> = ({ index, date, link, title, description, stars }) => {
+const Card: React.FC<CardProps> = ({ index, date, link, img, title, description, stars }) => {
 
   const handleRouteTransition = () => {
     window.open(link, "_blank", 'noopener,noreferrer');
@@ -32,7 +33,12 @@ const Card: React.FC<CardProps> = ({ index, date, link, title, description, star
         <div
           className="bg-gray-900 text-white rounded-lg shadow-lg hover:scale-[.95] cursor-pointer hover:opacity-[0.6]"
         >
-          <p className="text-gray-400 text-sm">{date}</p>
+          <img 
+            src={img} 
+            alt={"Project"} 
+            className='w-[100%] h-[120px] rounded-[5px] object-cover'
+          />
+          <p className="text-gray-400 text-sm mt-6">{date}</p>
           <h2 className="text-2xl font-bold mt-2">{title}</h2>
           <p className="text-gray-300 mt-4 text-sm text-[#ffffff90]">{description}</p>
           <div className="flex items-center justify-between mt-6">
