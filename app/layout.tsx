@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Daniel Adewale",
-  description: "Software Engineer with over 6 years of experience",
+  title: "Daniel Adewale — Software Engineer",
+  description: "Software Engineer & Senior Frontend Developer with 6+ years building quality products.",
 };
 
 export default function RootLayout({

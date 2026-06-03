@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 720" width="900" height="720">
+  <defs>
+    <filter id="b" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="55" />
+    </filter>
+    <filter id="g">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" />
+      <feColorMatrix type="saturate" values="0" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.05" /></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="900" height="720" fill="#eef1f6" />
+  <g filter="url(#b)">
+    <circle cx="215" cy="195" r="280" fill="#b9cbeb" />
+    <circle cx="715" cy="540" r="320" fill="#d2d9ef" />
+    <circle cx="660" cy="150" r="210" fill="#cbdbe6" />
+    <circle cx="330" cy="620" r="200" fill="#dde6f3" />
+  </g>
+  <rect width="900" height="720" filter="url(#g)" />
+</svg>

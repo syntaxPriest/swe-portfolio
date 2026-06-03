@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 40" width="236" height="40">
+  <path d="M4 12 L18 5 L32 12 Z" fill="#0E0E0E"/>
+  <rect x="6" y="15" width="5" height="20" fill="#0E0E0E"/>
+  <rect x="15" y="15" width="5" height="20" fill="#0E0E0E"/>
+  <rect x="24" y="15" width="5" height="20" fill="#0E0E0E"/>
+  <text x="44" y="21" font-family="Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#0E0E0E" dominant-baseline="middle" letter-spacing="-0.6" textLength="186" lengthAdjust="spacingAndGlyphs">Metropolitan</text>
+</svg>

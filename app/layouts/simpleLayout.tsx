@@ -1,5 +1,6 @@
 import { navItemsProps } from '../page';
 import Header from './header'
+import { NavTintProvider } from '../components/navTint'
 // import Footer from '../Footer'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
 
@@ -13,14 +14,16 @@ export default function SimpleLayout({ children, className, centered = true, nav
         <div
             className="min-h-[100vh]"
         >
-            <main className={'w-[100%] max-w-[1440px] mx-auto'}>
-                <Header 
-                    navScroller={navScroller}
-                />
-                {children}
-                {/* <Footer /> */}
-            </main>
+            <NavTintProvider>
+                <main className={'w-[100%] max-w-[1440px] mx-auto'}>
+                    <Header
+                        navScroller={navScroller}
+                    />
+                    {children}
+                    {/* <Footer /> */}
+                </main>
+            </NavTintProvider>
         </div>
-        
+
     )
 }

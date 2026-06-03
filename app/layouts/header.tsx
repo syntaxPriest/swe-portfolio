@@ -1,89 +1,98 @@
 'use client';
 
-import React, { useState } from "react";
-import Button from "../components/button";
-import { navItemsProps } from "../page";
+import React, { useState } from 'react';
+import { navItemsProps } from '../page';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { useNavTint, navSaturation } from '../components/navTint';
 
 interface HeaderProps {
- navScroller: (refId: navItemsProps) => void;
+  navScroller: (refId: navItemsProps) => void;
 }
 
-export default function Header ({
-    navScroller
-}: HeaderProps){
+const myEmail = 'adewaled03@gmail.com';
 
-    const [bulbOn, setBulbOn] = useState(true);
-    return(
-        <>
-            <header 
-                className="flex justify-center z-[10]"
+export default function Header({ navScroller }: HeaderProps) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const tint = useNavTint();
+
+  const handleNav = (id: navItemsProps) => {
+    setMobileOpen(false);
+    navScroller(id);
+  };
+
+  // Over a (light) parallax panel the nav bar takes a soft light tint of the
+  // panel's hue; text stays dark.
+  const tinted = !!tint && !mobileOpen;
+  const navStyle = tinted
+    ? { background: `hsl(${Math.round(tint!.h)} ${navSaturation(tint!.s)}% 92% / 0.82)` }
+    : undefined;
+
+  return (
+    <>
+      <div className={`nav-wrap ${tinted ? 'is-tinted' : ''}`} style={navStyle}>
+        <a
+          href="#home"
+          onClick={(e) => { e.preventDefault(); handleNav('home'); }}
+          className="text-[15px] font-semibold tracking-tight flex items-center gap-1"
+        >
+          daniel<span className="text-[var(--ink-mute)] text-[11px] -translate-y-2">®</span>
+        </a>
+
+        <nav className="flex items-center gap-7 sm:hidden">
+          {navs.map((item) => (
+            <button key={item.id} onClick={() => handleNav(item.id)} className="nav-link">
+              {item.name}
+            </button>
+          ))}
+          <a href="/cv" className="nav-link">CV</a>
+          <a href={`mailto:${myEmail}`} className="nav-link inline-flex items-center gap-1">
+            Start project <ArrowUpRight size={13} />
+          </a>
+        </nav>
+
+        <button
+          aria-label="Toggle menu"
+          onClick={() => setMobileOpen((v) => !v)}
+          className="nav-toggle hidden sm:flex w-10 h-10 rounded-full bg-[var(--bg-card)] items-center justify-center"
+        >
+          {mobileOpen ? <X size={16} /> : <Menu size={16} />}
+        </button>
+      </div>
+
+      {mobileOpen && (
+        <div className="hidden sm:flex flex-col fixed top-[64px] left-4 right-4 z-[99] bg-[var(--bg)] border border-[var(--line)] rounded-2xl p-4 gap-1 shadow-lg">
+          {navs.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => handleNav(item.id)}
+              className="text-left px-3 py-3 rounded-xl text-[15px] hover:bg-[var(--bg-card)]"
             >
-                {/* {
-
-                    bulbOn &&
-                        <img 
-                            src="/bg/light-source.png" 
-                            alt="" 
-                            className="absolute h-[50rem] top-0 left-[50%] opacity-[0.6] z-[10] sm:hidden"
-                            style={{
-                                transform: 'translate(-50%, 0)',
-                                transition: '2s'
-                            }}
-                        />
-                } */}
-                
-                <div className="sm:hidden relative mt-5 border border-[silver] rounded-[200px] flex items-center justify-center bg-[#ffffff40] z-[100]">
-                    <div className="flex py-[16px] text-[14px] px-[40px] items-center gap-[50px]">
-                        {
-                            navs.map((item, index) => (
-                                <p 
-                                    key={index}
-                                    onClick={() => navScroller(item.id)}
-                                    className="cursor-pointer hover:opacity-[0.6] hover:scale-[.95]"
-                                >{item.name}</p>
-                            ))
-                        }
-                    </div>
-                </div>
-                <div className="hidden absolute top-0 right-[5rem] flex flex-col items-center z-[1000]">
-                    <div className="h-[200px] w-[5px] bg-[#ffffff40]"></div>
-                    <img 
-                        src={bulbOn ? "/bg/idea.png" : "/bg/lamp.png"}
-                        alt="" 
-                        className="w-[4rem] relative top-[-2rem] rotate-[180deg] z-[100000] cursor-pointer hover:scale-[1.1]"
-                        onClick={() => setBulbOn(!bulbOn)} 
-                    />
-                </div>
-            </header>
-        </>
-    )
+              {item.name}
+            </button>
+          ))}
+          <a
+            href="/cv"
+            className="text-left px-3 py-3 rounded-xl text-[15px] hover:bg-[var(--bg-card)]"
+          >
+            CV
+          </a>
+          <a
+            href={`mailto:${myEmail}`}
+            className="mt-2 flex items-center justify-center gap-2 px-3 py-3 rounded-xl bg-[var(--ink)] text-[var(--bg)] text-[14px]"
+          >
+            Start project <ArrowUpRight size={14} />
+          </a>
+        </div>
+      )}
+    </>
+  );
 }
 
-interface navProps {
-    name: string;
-    id: navItemsProps
-}
-
+interface navProps { name: string; id: navItemsProps; }
 const navs: navProps[] = [
-    {
-        name: 'Home',
-        id: 'home'
-    },
-    {
-        name: 'About',
-        id: 'about'
-    },
-
-    {
-        name: 'Works',
-        id: 'works'
-    },
-    {
-        name: 'Projects',
-        id: 'projects'
-    },
-    {
-        name: 'Articles',
-        id: 'articles'
-    },
-]
+  { name: 'Works', id: 'projects' },
+  { name: 'Experience', id: 'experience' },
+  { name: 'Journal', id: 'articles' },
+  { name: 'About', id: 'about' },
+  { name: 'Contact', id: 'works' },
+];

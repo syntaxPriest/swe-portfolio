@@ -1,75 +1,68 @@
-import { SparklesIcon } from '@heroicons/react/20/solid';
 import React from 'react';
-
-
+import { Github, Linkedin, Twitter, Mail, ArrowUpRight } from 'lucide-react';
 
 const myEmail = "adewaled03@gmail.com";
 
-export default function SocialSection () {
+export default function SocialSection() {
+  return (
+    <div className="surface surface-hover p-6">
+      <div className="flex items-center gap-2">
+        <div className="w-8 h-8 rounded-full bg-[var(--accent-soft)] flex items-center justify-center">
+          <ArrowUpRight size={14} className="text-[var(--accent)]" />
+        </div>
+        <span className="mono-label">Elsewhere</span>
+      </div>
+      <p className="text-[14px] text-[var(--text-dim)] mt-2">
+        Drop in. Say hi. Pick a channel.
+      </p>
 
-    return (
-        <>
-            <div className="border border-[#ffffff20] bg-[#000000020] rounded-[20px] p-[20px]">
-              <p className="flex items-center gap-[10px]">
-                <SparklesIcon className="w-5 h-5" color="#C6FCA6" />
-                Socials/Links
-              </p>
-              <p className="text-[#ffffff80] text-[14px]">
-                Links to my social outlets
-              </p>
-              <div className="flex items-center gap-[20px] mt-[1rem]">
-                {social.map((item, index) => (
-                  <a href={item.link} key={index} target="_blank">
-                    <img
-                      src={item.icon}
-                      alt=""
-                      style={{
-                        height: item.size || "2.5rem",
-                      }}
-                    />
-                  </a>
-                ))}
-              </div>
+      <div className="grid grid-cols-2 gap-2 mt-5">
+        {social.map((item, index) => (
+          <a
+            href={item.link}
+            key={index}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-between px-3 py-3 rounded-xl border border-[var(--border)] bg-[rgba(255,255,255,0.02)] hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] transition-all"
+          >
+            <div className="flex items-center gap-2 min-w-0">
+              <item.Icon size={16} className="shrink-0 text-[var(--text-dim)] group-hover:text-[var(--accent)]" />
+              <span className="text-[13px] truncate">{item.name}</span>
             </div>
-        </>
-    )
+            <ArrowUpRight
+              size={14}
+              className="text-[var(--text-muted)] group-hover:text-[var(--accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export const social = [
-    {
-      id: "1",
-      name: "Github",
-      icon: "/stack/git.png",
-      link: "https://github.com/syntaxPriest",
-      nameDisplay: true,
-    },
-    {
-      id: "2",
-      name: "Linkedin",
-      icon: "/social/linkedin.png",
-      link: "https://www.linkedin.com/in/syntaxpriest/",
-      nameDisplay: true,
-    },
-    {
-      id: "3",
-      name: "Twitter",
-      icon: "/social/x.webp",
-      link: "https://twitter.com/syntaxPriest",
-      nameDisplay: true,
-      size: "5rem",
-    },
-    {
-      id: "4",
-      name: "Email",
-      icon: "/social/gmail.png",
-      link: `mailto:${myEmail}`,
-      nameDisplay: true,
-    },
-    // {
-    //     id: '5',
-    //     name: 'Phone',
-    //     icon: LocalPhone,
-    //     link: 'tel:08188869197',
-    //     nameDisplay: true
-    // },
-  ];
+  {
+    id: "1",
+    name: "Github",
+    Icon: Github,
+    link: "https://github.com/syntaxPriest",
+  },
+  {
+    id: "2",
+    name: "LinkedIn",
+    Icon: Linkedin,
+    link: "https://www.linkedin.com/in/syntaxpriest/",
+  },
+  {
+    id: "3",
+    name: "Twitter",
+    Icon: Twitter,
+    link: "https://twitter.com/syntaxPriest",
+  },
+  {
+    id: "4",
+    name: "Email",
+    Icon: Mail,
+    link: `mailto:${myEmail}`,
+  },
+];

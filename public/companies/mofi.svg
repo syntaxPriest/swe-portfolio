@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="120" height="40">
+  <rect x="4" y="22" width="7" height="13" rx="1.5" fill="#0E0E0E"/>
+  <rect x="14" y="12" width="7" height="23" rx="1.5" fill="#0E0E0E"/>
+  <rect x="24" y="17" width="7" height="18" rx="1.5" fill="#0E0E0E"/>
+  <text x="44" y="21" font-family="Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#0E0E0E" dominant-baseline="middle" letter-spacing="-0.6" textLength="70" lengthAdjust="spacingAndGlyphs">MoFI</text>
+</svg>
