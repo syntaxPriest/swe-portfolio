@@ -205,13 +205,21 @@ export default function WorksPage() {
 }
 
 const heroStats = [
-  { num: '11', lbl: 'Projects shipped' },
+  { num: '12', lbl: 'Projects shipped' },
   { num: '6+', lbl: 'Years building' },
   { num: '1M+', lbl: 'Users reached' },
   { num: '4', lbl: 'Teams partnered' },
 ];
 
 const works = [
+  {
+    name: '2004 Estate',
+    category: 'Platform' as Category,
+    year: '2025',
+    img: '/works/2004estate.png',
+    link: 'https://2004estate.ng',
+    desc: 'A property platform for a coastal residential estate — browse residences, explore floor plans, and choose flexible installment or mortgage plans.',
+  },
   {
     name: 'Song Explainer',
     category: 'Web app' as Category,

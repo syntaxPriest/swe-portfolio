@@ -711,6 +711,13 @@ const journalEntries = [
 
 const projectList = [
   {
+    name: '2004 Estate',
+    img: '/works/2004estate.png',
+    link: 'https://2004estate.ng',
+    duration: '2025',
+    desc: 'A property platform for a coastal residential estate — browse residences, explore floor plans, and choose flexible installment or mortgage plans in a fast, trust-building interface.',
+  },
+  {
     name: 'Song Explainer',
     img: '/works/lyrist.png',
     link: 'https://lyrist.netlify.app',
