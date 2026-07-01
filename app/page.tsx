@@ -711,6 +711,13 @@ const journalEntries = [
 
 const projectList = [
   {
+    name: 'Openvisio',
+    img: '/works/openvisio.png',
+    link: 'https://openvisio.io',
+    duration: '2025',
+    desc: 'A code-intelligence tool that turns a repository into a navigable knowledge graph — trace call chains, map dependencies, and surface structure so AI agents and engineers can understand large codebases at a glance.',
+  },
+  {
     name: '2004 Estate',
     img: '/works/2004estate.png',
     link: 'https://2004estate.ng',
