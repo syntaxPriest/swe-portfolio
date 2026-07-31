@@ -1,0 +1,75 @@
+/* ===================================================================
+ * Base — reset, variables, typography, scrollbar
+ * =================================================================== */
+
+:root {
+  --bg: #FFFFFF;
+  --bg-soft: #F6F5F2;
+  --bg-card: #F1EFEA;
+  --ink: #0E0E0E;
+  --ink-soft: #5A5A5A;
+  --ink-mute: #9A988F;
+  --line: #EDEBE5;
+}
+
+@font-face {
+  font-family: "Cal Sans";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url("../fonts/webfonts/CalSans-SemiBold.woff2") format("woff2"),
+    url("../fonts/webfonts/CalSans-SemiBold.woff") format("woff"),
+    url("../fonts/webfonts/CalSans-SemiBold.ttf") format("truetype");
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Cal Sans', 'Inter', Helvetica, sans-serif;
+  scroll-behavior: smooth;
+  /* clip (not hidden) prevents the full-bleed 100vw panels from causing a
+     horizontal scrollbar WITHOUT creating a scroll container that would
+     break `position: sticky` (the service stack, FAQ rail). */
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cal Sans', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ============ Display heading ============ */
+.display {
+  font-family: 'Cal Sans', 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  color: var(--ink);
+}
+
+/* ============ Focus ring (keyboard accessibility) ============ */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Remove the default focus ring for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============ Scrollbar ============ */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 100px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-mute); }

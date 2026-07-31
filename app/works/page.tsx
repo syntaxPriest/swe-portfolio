@@ -4,11 +4,10 @@ import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Reveal from '../components/reveal';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { myEmail, projectList, heroStats, type Category } from '../data/portfolio';
 
-const myEmail = 'adewaled03@gmail.com';
 const PER_PAGE = 6;
 
-type Category = 'All' | 'Platform' | 'Web app' | 'Marketing site';
 const FILTERS: Category[] = ['All', 'Platform', 'Web app', 'Marketing site'];
 
 export default function WorksPage() {
@@ -16,7 +15,7 @@ export default function WorksPage() {
   const [page, setPage] = useState(1);
 
   const filtered = useMemo(
-    () => (filter === 'All' ? works : works.filter((w) => w.category === filter)),
+    () => (filter === 'All' ? projectList : projectList.filter((w) => w.category === filter)),
     [filter]
   );
   const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
@@ -203,109 +202,3 @@ export default function WorksPage() {
     </main>
   );
 }
-
-const heroStats = [
-  { num: '12', lbl: 'Projects shipped' },
-  { num: '6+', lbl: 'Years building' },
-  { num: '1M+', lbl: 'Users reached' },
-  { num: '4', lbl: 'Teams partnered' },
-];
-
-const works = [
-  {
-    name: '2004 Estate',
-    category: 'Platform' as Category,
-    year: '2025',
-    img: '/works/2004estate.png',
-    link: 'https://2004estate.ng',
-    desc: 'A property platform for a coastal residential estate — browse residences, explore floor plans, and choose flexible installment or mortgage plans.',
-  },
-  {
-    name: 'Song Explainer',
-    category: 'Web app' as Category,
-    year: '2025',
-    img: '/works/lyrist.png',
-    link: 'https://lyrist.netlify.app',
-    desc: 'Paste a Spotify link or a song and artist, and Lyrist unpacks what the track is really about — themes, line-by-line meaning, and references.',
-  },
-  {
-    name: 'BrimAI',
-    category: 'Web app' as Category,
-    year: '2025',
-    img: '/works/brim.png',
-    link: 'https://trybrim.app',
-    desc: 'A prompt-engineering app that turns rough ideas into expert-level prompts, with a browser extension to use it anywhere.',
-  },
-  {
-    name: 'MoFI Housing',
-    category: 'Platform' as Category,
-    year: '2024',
-    img: '/works/mofi2.png',
-    link: 'https://mreif.com.ng',
-    desc: 'A housing-finance platform built for the Ministry of Finance — a dense catalogue turned into a calm, guided search.',
-  },
-  {
-    name: 'Renewed Hope Homes',
-    category: 'Platform' as Category,
-    year: '2024',
-    img: '/works/rh.png',
-    link: 'https://renewedhopehomes.fmhud.gov.ng/properties/search',
-    desc: 'The public property-search platform for a national housing initiative — 50,000+ registrations and ₦1B+ in sales.',
-  },
-  {
-    name: 'Mage',
-    category: 'Platform' as Category,
-    year: 'Ongoing',
-    img: '/works/mage.png',
-    link: 'https://trymage.com',
-    desc: 'A platform for creative businesses to manage payments and financial operations — wallets, checkout, and a virtual card system.',
-  },
-  {
-    name: 'Contribuild',
-    category: 'Platform' as Category,
-    year: '2023',
-    img: '/works/contribuild.png',
-    link: 'https://contribuild.ng',
-    desc: 'A platform that helps individuals save toward their dream homes, pairing heavy data with a readable, actionable interface.',
-  },
-  {
-    name: 'Stream UI',
-    category: 'Web app' as Category,
-    year: '2023',
-    img: '/works/video.png',
-    link: 'https://vid-react.netlify.app',
-    desc: 'A streaming-interface exploration in React — fluid playback controls and a responsive content grid.',
-  },
-  {
-    name: 'Metropolitan Club',
-    category: 'Marketing site' as Category,
-    year: '2023',
-    img: '/works/tmc.png',
-    link: '',
-    desc: 'A refined, editorial presence for a members’ club — typography-led and image-forward.',
-  },
-  {
-    name: 'Multigrid Limited',
-    category: 'Marketing site' as Category,
-    year: '2021',
-    img: '/works/multigrid.png',
-    link: '',
-    desc: 'A marketing site for a firm specializing in architecture, construction, and engineering.',
-  },
-  {
-    name: 'Otayemi Law Firm',
-    category: 'Marketing site' as Category,
-    year: '2021',
-    img: '/works/law.jpg',
-    link: '',
-    desc: 'A polished presence for a team of lawyers with expertise across diverse fields of practice.',
-  },
-  {
-    name: 'Hua Ou Clay Bricks',
-    category: 'Marketing site' as Category,
-    year: '2020',
-    img: '/works/huaoy.png',
-    link: '',
-    desc: 'A site for a construction company that evaluates and sells clay bricks to clients.',
-  },
-];
