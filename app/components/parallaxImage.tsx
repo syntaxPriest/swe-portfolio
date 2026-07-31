@@ -18,6 +18,7 @@ export default function ParallaxImage({
 }: ParallaxImageProps) {
   const layerRef = useRef<HTMLDivElement>(null);
 
+  
   useEffect(() => {
     const layer = layerRef.current;
     if (!layer) return;
