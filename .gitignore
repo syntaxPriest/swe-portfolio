@@ -1,2 +1,4 @@
 node_modules
 .next
+# OpenVisio local tool cache (machine-specific, binary, not source)
+.openvisio/
