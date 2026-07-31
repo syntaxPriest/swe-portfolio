@@ -18,13 +18,13 @@ export default function ParallaxImage({
 }: ParallaxImageProps) {
   const layerRef = useRef<HTMLDivElement>(null);
 
-  
   useEffect(() => {
     const layer = layerRef.current;
     if (!layer) return;
     const frame = layer.parentElement;
     if (!frame) return;
 
+    
     const prefersReduced =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
