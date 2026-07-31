@@ -32,6 +32,7 @@ export default function ParallaxImage({
 
     let raf = 0;
 
+    
     const update = () => {
       const rect = frame.getBoundingClientRect();
       const vh = window.innerHeight || document.documentElement.clientHeight;
