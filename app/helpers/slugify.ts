@@ -11,5 +11,8 @@ export function slugify(title: string) {
 export function labelFromPath(path: string) {
   const parts = path.split('/')
   const file = parts[parts.length - 1] ?? ''
-  return file.replace(/\.[^.]+$/, '') // drop the file extension
+  // Drop the extension, but only when there is a base name before the dot, so
+  // dotfiles like ".gitignore" keep their full name instead of becoming empty.
+  const dot = file.lastIndexOf('.')
+  return dot > 0 ? file.slice(0, dot) : file
 }

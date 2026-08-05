@@ -4,6 +4,13 @@ import { isEmail, escapeHtml } from '../../helpers/validate'
 // Handles the "book a call" form submitted from bookingModal.tsx and forwards it
 // to the email provider.
 const RESEND_API_KEY = process.env.RESEND_API_KEY
+// The site owner who should receive booking notifications (never the submitter).
+const BOOKING_TO_EMAIL = process.env.BOOKING_TO_EMAIL
+
+// Strip CR/LF so a submitted name cannot inject extra email headers via the subject.
+function sanitizeHeader(value: string) {
+  return value.replace(/[\r\n]+/g, ' ').trim()
+}
 
 interface BookingRequest {
   name: string
@@ -12,8 +19,8 @@ interface BookingRequest {
 }
 
 export async function POST(req: Request) {
-  if (!RESEND_API_KEY) {
-    console.error('booking: RESEND_API_KEY is not configured')
+  if (!RESEND_API_KEY || !BOOKING_TO_EMAIL) {
+    console.error('booking: RESEND_API_KEY or BOOKING_TO_EMAIL is not configured')
     return NextResponse.json({ error: 'server misconfigured' }, { status: 500 })
   }
 
@@ -44,8 +51,10 @@ export async function POST(req: Request) {
       },
       body: JSON.stringify({
         from: 'portfolio@example.com',
-        to: email,
-        subject: 'Booking from ' + name,
+        // Notify the site owner; let them reply straight to the submitter.
+        to: BOOKING_TO_EMAIL,
+        reply_to: email,
+        subject: 'Booking from ' + sanitizeHeader(name),
         html: escapeHtml(message),
       }),
     })

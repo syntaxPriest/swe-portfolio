@@ -24,7 +24,6 @@ export default function ParallaxImage({
     const frame = layer.parentElement;
     if (!frame) return;
 
-    
     const prefersReduced =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -32,7 +31,6 @@ export default function ParallaxImage({
 
     let raf = 0;
 
-    
     const update = () => {
       const rect = frame.getBoundingClientRect();
       const vh = window.innerHeight || document.documentElement.clientHeight;
